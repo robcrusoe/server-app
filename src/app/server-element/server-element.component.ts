@@ -4,7 +4,9 @@ import {
 	AfterViewChecked,
 	AfterViewInit,
 	Component,
+	ContentChild,
 	DoCheck,
+	ElementRef,
 	Input,
 	OnChanges,
 	OnDestroy,
@@ -32,6 +34,7 @@ export class ServerElementComponent implements
 
 	@Input('serverEl') element: { type: string, name: string, content: string };
 	@Input('name') name: string;
+	@ContentChild('contentParagraph', { static: true }) para: ElementRef;
 
 	constructor() {
 		console.log("constructor called!");
@@ -43,6 +46,7 @@ export class ServerElementComponent implements
 
 	ngOnInit(): void {
 		console.log("ngOnInit called!");
+		console.log("** para: ", this.para.nativeElement.textContent);
 	}
 
 	ngDoCheck() {
@@ -51,6 +55,7 @@ export class ServerElementComponent implements
 
 	ngAfterContentInit() {
 		console.log("ngAfterContentInit called!");
+		console.log("** para: ", this.para.nativeElement.textContent);
 	}
 
 	ngAfterContentChecked() {
