@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { ElementRef, EventEmitter, ViewChild } from '@angular/core';
 import { Component, Output } from '@angular/core';
 
 @Component({
@@ -8,8 +8,8 @@ import { Component, Output } from '@angular/core';
 })
 export class CockpitComponent {
 
-	elementName: string = '';
-	elementContent: string = '';
+	@ViewChild('elementName', { static: true }) elementName: ElementRef;
+	@ViewChild('elementContent', { static: true }) elementContent: ElementRef;
 	@Output('elCreated') elementCreated = new EventEmitter<{ type: string, name: string, content: string }>();
 
 	constructor() { }
@@ -17,16 +17,16 @@ export class CockpitComponent {
 	onServerAdded(serverData: { serverName: string, serverContent: string }): void {
 		this.elementCreated.emit({
 			type: 'server',
-			name: serverData.serverName,
-			content: serverData.serverContent
+			name: this.elementName.nativeElement.value,
+			content: this.elementContent.nativeElement.value
 		});
 	}
 
 	onBlueprintAdded(blueprintData: { blueprintName: string, blueprintContent: string }): void {
 		this.elementCreated.emit({
 			type: 'blueprint',
-			name: blueprintData.blueprintName,
-			content: blueprintData.blueprintName
+			name: this.elementName.nativeElement.value,
+			content: this.elementContent.nativeElement.value
 		});
 	}
 
