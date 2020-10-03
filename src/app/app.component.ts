@@ -13,4 +13,8 @@ export class AppComponent {
 			content: 'Just a Test'
 		}
 	];
+
+	onElementCreated(elementCreated: { type: string, name: string, content: string }): void {
+		this.serverElements.push(elementCreated);
+	}
 }
