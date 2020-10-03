@@ -17,4 +17,8 @@ export class AppComponent {
 	onElementCreated(elementCreated: { type: string, name: string, content: string }): void {
 		this.serverElements.push(elementCreated);
 	}
+
+	onChangeFirst(): void {
+		this.serverElements[0].name = "Changed";
+	}
 }
