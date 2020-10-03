@@ -1,0 +1,22 @@
+.btn {
+	width: 18rem;
+	margin-right: 0.5rem;
+	color: #980000;
+	background: white;
+	border-radius: none;
+	border: 2px solid #980000;
+}
+
+.btn:hover {
+	background: #980000;
+	color: white;
+}
+
+.btn:active {
+	background: #980000;
+	color: white;
+}
+
+label {
+    margin-top: 1.25rem;
+}
