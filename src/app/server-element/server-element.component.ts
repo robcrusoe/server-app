@@ -1,7 +1,13 @@
 import {
+	AfterContentChecked,
+	AfterContentInit,
+	AfterViewChecked,
+	AfterViewInit,
 	Component,
+	DoCheck,
 	Input,
 	OnChanges,
+	OnDestroy,
 	OnInit,
 	SimpleChanges,
 	ViewEncapsulation
@@ -16,7 +22,13 @@ import {
 })
 export class ServerElementComponent implements
 	OnInit,
-	OnChanges {
+	OnChanges,
+	DoCheck,
+	AfterContentInit,
+	AfterContentChecked,
+	AfterViewInit,
+	AfterViewChecked,
+	OnDestroy {
 
 	@Input('serverEl') element: { type: string, name: string, content: string };
 	@Input('name') name: string;
@@ -31,6 +43,30 @@ export class ServerElementComponent implements
 
 	ngOnInit(): void {
 		console.log("ngOnInit called!");
+	}
+
+	ngDoCheck() {
+		console.log("ngDoCheck() called!");
+	}
+
+	ngAfterContentInit() {
+		console.log("ngAfterContentInit called!");
+	}
+
+	ngAfterContentChecked() {
+		console.log("ngAfterContentChecked called!");
+	}
+
+	ngAfterViewInit() {
+		console.log("ngAfterViewInit called!");
+	}
+
+	ngAfterViewChecked() {
+		console.log("ngAfterViewChecked called!");
+	}
+
+	ngOnDestroy() {
+		console.log("ngOnDestroy called!");
 	}
 
 }

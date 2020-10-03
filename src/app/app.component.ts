@@ -21,4 +21,10 @@ export class AppComponent {
 	onChangeFirst(): void {
 		this.serverElements[0].name = "Changed";
 	}
+
+	onDeleteFirst(): void {
+		if(this.serverElements.length > 0) {
+			this.serverElements.splice(0, 1);
+		}
+	}
 }
